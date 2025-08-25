@@ -4,6 +4,7 @@ const MongoStore = require('connect-mongo')
 const session = require('express-session')
 const loginRout = require('./routes/login')
 const registerRout = require('./routes/register')
+const usersRout = require('./routes/users')
 
 
 app.use(express.json());
@@ -40,6 +41,8 @@ app.use('/login', loginRout )
 // register route
 app.use('/register',registerRout )
 
+// users route
+app.use('/users', usersRout)
 
 
 app.listen( PORT , ()=>{
