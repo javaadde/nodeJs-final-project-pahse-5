@@ -11,21 +11,21 @@ const schema = new mongoose.Schema({
 
 const users = mongoose.model('users',schema)
 
-// router.get('/', async(req,res) => {
+router.get('/', async(req,res) => {
 
-//     if(req.session.user._id === "admin"){
+    if(req.session.user._id === "admin"){
 
-//     await mongoose.connect(url)
-//     const data = await users.find()
-//     res.json(data)
+    await mongoose.connect(url)
+    const data = await users.find()
+    res.json(data)
 
-//     }
-//     else{
-//         res.send('404')
-//     }
+    }
+    else{
+        res.send('404')
+    }
 
    
-// })
+})
 
 
 router.get('/:id',async (req,res) => {
