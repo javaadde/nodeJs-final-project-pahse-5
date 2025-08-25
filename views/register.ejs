@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= title %> </title>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <link rel="stylesheet" href="style.css">
+
+
+    <style type="text/tailwindcss">
+
+      @theme {
+        --color-primery: #eee;
+        --color-secondery:#fff;
+        --color-teritiory:#000;
+      }
+
+    </style>
+
+
+</head>
+<body>
+
+    <div class="w-full h-screen bg-primery flex items-center justify-center">
+
+       
+
+                    <form action="register" autocomplete="off" method="POST"
+                    class="w-1/2 h-2/3 bg-secondery rounded-xl shadow-xl 
+                    flex flex-col items-center justify-center 
+                    p-9 gap-5">
+
+                    <input type="text" placeholder="username" class="border-b-2 h-1/6 w-3/4 outline-none"
+                     name="_id">
+
+                    <input type="password" placeholder="Password" class="border-b-2 h-1/6 w-3/4 outline-none"
+                     name="password">
+
+                      <input type="password" placeholder="ReEnter Password" class="border-b-2 h-1/6 w-3/4 outline-none"
+                     name="Repassword">
+
+                    <button class="border-1 shadow-xl py-2 px-8 mt-5 rounded-xl cursor-pointer">
+                      Register</button>
+                    </form>
+                    
+
+
+    </div>
+    
+
+   
+</body>
+</html>

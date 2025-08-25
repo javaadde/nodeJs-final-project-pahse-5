@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= title %> </title>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <link rel="stylesheet" href="style.css">
+
+
+    <style type="text/tailwindcss">
+
+      @theme {
+        --color-primery: #eee;
+        --color-secondery:#fff;
+        --color-teritiory:#000;
+      }
+
+    </style>
+
+
+</head>
+<body>
+
+    <div class="w-full h-screen bg-primery flex items-center justify-center">
+
+       
+
+                    <div
+                    class="w-1/2 h-2/3 bg-secondery rounded-xl shadow-xl 
+                    flex flex-col items-center justify-center 
+                    p-9 gap-5">
+ 
+                    <h1> Wellcome <%= username %> </h1>
+                
+
+                    </div>
+                    
+
+
+    </div>
+    
+
+   
+</body>
+</html>
