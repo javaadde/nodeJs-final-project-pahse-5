@@ -5,6 +5,7 @@ const session = require('express-session')
 const loginRout = require('./routes/login')
 const registerRout = require('./routes/register')
 const usersRout = require('./routes/users')
+const path = require('path');
 
 
 app.use(express.json());
@@ -24,14 +25,17 @@ app.use(session({
 
 }));
 
-app.get('/', (req,res) =>{
-    res.render( "dashboard",{
-        title:'dashboard',
-        username:req.session.user._id
+
+const PORT = process.env.PORT || 5000;
+
+app.get('/',(req,res) => {
+    res.render('dashboard',{
+      title:'user',
+      username:req.session.user._id
     })
 })
 
-const PORT = process.env.PORT || 5000;
+
 
 app.set('view engine', 'ejs');
 
@@ -44,6 +48,12 @@ app.use('/register',registerRout )
 // users route
 app.use('/users', usersRout)
 
+
+
+// 404
+app.use((req,res) =>{
+   res.sendFile(path.join(__dirname,'views','404.html')); 
+})
 
 app.listen( PORT , ()=>{
     console.log("app listening on port:",PORT);
