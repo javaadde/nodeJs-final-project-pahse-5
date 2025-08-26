@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        *{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h1{
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>User</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Acitiveness</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+           
+                <tr>
+                    <td><%= user._id %></td>
+                    <td><%= user.active %></td>
+                    <td><%= user.password %></td>
+                </tr>
+         
+            
+        </tbody>
+    </table>
+</body>
+</html>
