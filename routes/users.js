@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router();
 const mongoose = require('mongoose')
 const checkIsAdmin = require('../middleware/adminAuthentication');
+const path = require('path');
+const { title } = require('process');
 
 const url = "mongodb://localhost:27017/MyUsers"
 
@@ -36,7 +38,7 @@ router.get('/:id',checkIsAdmin,async (req,res) => {
 })
 
 
-router.get('/:id/:active',checkIsAdmin,async (req,res) =>{
+router.post('/:id/:active',checkIsAdmin,async (req,res) =>{
 
     await mongoose.connect(url)
     console.log('connected to db');
@@ -50,7 +52,13 @@ router.get('/:id/:active',checkIsAdmin,async (req,res) =>{
 
     if(active === 'disable'){
         await users.updateOne({_id:username} , {$set:{active:false}})
-              res.send('<h1>changed sucessfully<h1/>');
+               res.render(
+                'message', {
+                    title:'Editer',
+                    message:'User has been disbled',
+                    color:'#07fa60'
+                }
+              )
     }
     else if(active === 'enable'){
 
@@ -60,11 +68,23 @@ router.get('/:id/:active',checkIsAdmin,async (req,res) =>{
         {$set:{active:true}},
         { new: true }  )
 
-              res.send('<h1>changed sucessfully<h1/>');
+              res.render(
+                'message', {
+                    title:'Editer',
+                    message:'User has been enabled',
+                    color:'#07fa60'
+                }
+              )
               
     }
     else{
-       res.send('<h1>please enter the currect value<h1/>');
+       res.render(
+        'message',{
+            title:'404',
+            message:'please enter currect validation',
+            color:'#fa0723'
+        }
+       )
     }
 
 })

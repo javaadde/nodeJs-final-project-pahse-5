@@ -6,6 +6,15 @@ const loginRout = require('./routes/login')
 const registerRout = require('./routes/register')
 const usersRout = require('./routes/users')
 const path = require('path');
+const { title } = require('process');
+
+
+
+
+// view engine_________________
+app.set('view engine', 'ejs');
+
+
 
 
 app.use(express.json());
@@ -28,16 +37,39 @@ app.use(session({
 
 const PORT = process.env.PORT || 5000;
 
+// commen
+
 app.get('/',(req,res) => {
+
+    if(req.session.user){
+
     res.render('dashboard',{
       title:'user',
       username:req.session.user._id
     })
+
+    }else{
+        res.render(
+            'login',{
+                title:'login'
+            }
+        )
+    }
+
+})
+
+//  userDetails
+app.get('/details',(req,res) =>{
+    res.render(
+        'userDetails',{
+            title:'details',
+            username: req.session.user._id,
+            active: req.session.user.active,
+        }
+    ) 
 })
 
 
-
-app.set('view engine', 'ejs');
 
 // login route
 app.use('/login', loginRout )

@@ -39,19 +39,30 @@ router.post('/' , (req, res) => {
          }
 
          users.insertOne(doc)
-         .then(()=> console.log('inserted successfully'))
+         .then(()=> {
+            console.log('inserted successfully')
+             res.render('dashboard',{
+             title:'dashboard',
+             username:userDoc._id
+             })  
+         })
+
          .catch((err) =>{
 
-            if (err.code === 11000) {
-                res.send('the username all ready exists')
-            } 
-        })
+            console.log(err);
+            
 
-        
-         res.render('dashboard',{
-         title:'dashboard',
-         username:userDoc._id
-         })    
+            if (err.code === 11000) {
+                res.render(
+                'message',{
+                    title:'Sorry',
+                    message:'Sorry the user allready exist',
+                    color:'#eb7a34'
+                }
+            )
+            } 
+
+          })
 
             
         }
@@ -60,7 +71,13 @@ router.post('/' , (req, res) => {
     }
     else{
 
-       res.send('<h1> please enter two currect passwords </h1>')
+       res.render(
+        'message',{
+            title:'Register',
+            message:'please enter currect two passwords please',
+            color:'#fa0723'
+        }
+       )
     }
 
 

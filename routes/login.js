@@ -47,6 +47,7 @@ router.post('/', async (req,res) =>{
           
             _id:userData._id,
             password:user.password,
+            active:user.active
 
         }
         
@@ -56,7 +57,13 @@ router.post('/', async (req,res) =>{
         })
 
     } else {
-        res.send('your password or username where in correct')
+         res.render(
+            'message',{
+            title:'404',
+            message:'Your password or username where incorrect',
+            color:'#eb7a34'
+        }
+       )
     }
     
 
