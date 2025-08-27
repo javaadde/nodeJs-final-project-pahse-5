@@ -38,7 +38,7 @@ router.get('/:id',checkIsAdmin,async (req,res) => {
 })
 
 
-router.post('/:id/:active',checkIsAdmin,async (req,res) =>{
+router.get('/:id/:active', checkIsAdmin ,async (req,res) =>{
 
     await mongoose.connect(url)
     console.log('connected to db');
@@ -46,11 +46,11 @@ router.post('/:id/:active',checkIsAdmin,async (req,res) =>{
 
     const username = req.params.id ;
     const active = req.params.active;
-
-    console.log(typeof username);
     
 
     if(active === 'disable'){
+        console.log('disable if worked');
+        
         await users.updateOne({_id:username} , {$set:{active:false}})
                res.render(
                 'message', {
